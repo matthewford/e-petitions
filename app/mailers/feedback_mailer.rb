@@ -3,7 +3,7 @@ class FeedbackMailer < ApplicationMailer
     @feedback = feedback
 
     mail  to: Site.feedback_email,
-          subject: "Feedback from the Petitions service",
+          subject: I18n.t('mailers.feedback.subject'),
           reply_to: feedback.email
   end
 end

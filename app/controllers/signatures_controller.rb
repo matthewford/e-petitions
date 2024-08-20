@@ -88,13 +88,13 @@ class SignaturesController < ApplicationController
   def petition_id
     @petition_id ||= Integer(params[:petition_id])
   rescue ArgumentError => e
-    raise ActionController::BadRequest, "Invalid petition id: #{params[:petition_id]}"
+    raise ActionController::BadRequest, I18n.t('petitions.invalid_id', id: params[:petition_id])
   end
 
   def signature_id
     @signature_id ||= Integer(params[:id])
   rescue ArgumentError => e
-    raise ActionController::BadRequest, "Invalid signature id: #{params[:id]}"
+    raise ActionController::BadRequest, I18n.t('signatures.invalid_id', id: params[:id])
   end
 
   def token_param
@@ -186,25 +186,25 @@ class SignaturesController < ApplicationController
 
   def redirect_to_petition_page_if_rejected
     if @petition.rejected?
-      redirect_to petition_url(@petition), notice: :cant_sign_rejected
+      redirect_to petition_url(@petition), notice: I18n.t('signatures.cant_sign_rejected')
     end
   end
 
   def redirect_to_petition_page_if_closed
     if @petition.closed?
-      redirect_to petition_url(@petition), notice: :cant_sign_closed
+      redirect_to petition_url(@petition), notice: I18n.t('signatures.cant_sign_closed')
     end
   end
 
   def redirect_to_petition_page_if_closed_for_signing
     if @petition.closed_for_signing?
-      redirect_to petition_url(@petition), notice: :cant_sign_closed
+      redirect_to petition_url(@petition), notice: I18n.t('signatures.cant_sign_closed')
     end
   end
 
   def redirect_to_petition_page_if_paused
     if Site.signature_collection_disabled?
-      redirect_to petition_url(@petition), notice: :cant_sign_paused
+      redirect_to petition_url(@petition), notice: I18n.t('signatures.cant_sign_paused')
     end
   end
 

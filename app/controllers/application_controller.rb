@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
   end
 
   def service_unavailable
-    raise Site::ServiceUnavailable, "Sorry, the website is temporarily unavailable"
+    raise Site::ServiceUnavailable, I18n.t('application.service_unavailable')
   end
 
   def site_enabled?

@@ -24,7 +24,7 @@ class SponsorsController < SignaturesController
     @petition = Petition.not_hidden.find(petition_id)
 
     if @petition.dormant? || @petition.stopped?
-      raise ActiveRecord::RecordNotFound, "Unable to find Petition with id: #{petition_id}"
+      raise ActiveRecord::RecordNotFound, I18n.t('sponsors.petition_not_found', id: petition_id)
     end
 
     unless @petition.sponsor_token == token_param
@@ -37,7 +37,7 @@ class SponsorsController < SignaturesController
     @petition = @signature.petition
 
     if @petition.dormant? || @petition.hidden? || @petition.stopped?
-      raise ActiveRecord::RecordNotFound, "Unable to find Signature with id: #{signature_id}"
+      raise ActiveRecord::RecordNotFound, I18n.t('sponsors.signature_not_found', id: signature_id)
     end
   end
 
