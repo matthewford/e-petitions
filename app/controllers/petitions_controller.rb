@@ -94,7 +94,7 @@ class PetitionsController < ApplicationController
   def petition_id
     Integer(params[:id])
   rescue ArgumentError => e
-    raise ActionController::BadRequest, "Invalid petition id: #{params[:id]}"
+    raise ActionController::BadRequest, I18n.t('petitions.invalid_id', id: params[:id])
   end
 
   def redirect_to_home_page_if_dissolved
@@ -131,7 +131,7 @@ class PetitionsController < ApplicationController
 
   def retrieve_petition
     if Petition.removed?(petition_id)
-      raise Site::PetitionRemoved, "Petition #{petition_id} has been removed"
+      raise Site::PetitionRemoved, I18n.t('petitions.removed', id: petition_id)
     end
 
     @petition = Petition.show.find(petition_id)

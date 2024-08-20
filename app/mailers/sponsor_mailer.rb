@@ -4,7 +4,7 @@ class SponsorMailer < ApplicationMailer
     @sponsor_count = @petition.sponsor_count
 
     mail(
-      subject: "#{@sponsor.name} supported your petition",
+      subject: I18n.t('mailers.sponsor_mailer.sponsor_signed_email_below_threshold.subject', sponsor_name: @sponsor.name),
       to: @petition.creator.email
     )
   end
@@ -14,7 +14,7 @@ class SponsorMailer < ApplicationMailer
     @sponsor_count = @petition.sponsor_count
 
     mail(
-      subject: "We’re checking your petition",
+      subject: I18n.t('mailers.sponsor_mailer.sponsor_signed_email_on_threshold.subject'),
       to: @petition.creator.email
     )
   end
@@ -23,9 +23,8 @@ class SponsorMailer < ApplicationMailer
     @petition, @sponsor = sponsor.petition, sponsor
 
     mail(
-      subject: "Please confirm your email address",
+      subject: I18n.t('mailers.sponsor_mailer.petition_and_email_confirmation_for_sponsor.subject'),
       to: @sponsor.email
     )
   end
 end
-

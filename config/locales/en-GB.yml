@@ -134,6 +134,19 @@ en-GB:
           one: 1 error prohibited this %{model} from being saved
           other: "%{count} errors prohibited this %{model} from being saved"
   helpers:
+    petition_duration:
+      months:
+        one: "1 month"
+        other: "%{count} months"
+      nearly_months:
+        one: "nearly 1 month"
+        other: "nearly %{count} months"
+      just_over_months:
+        one: "just over 1 month"
+        other: "just over %{count} months"
+      over_months:
+        one: "over 1 month"
+        other: "over %{count} months"
     label:
       tag:
         name: "Tag"
@@ -211,3 +224,18 @@ en-GB:
       long: "%d %B, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+  application:
+    service_unavailable: "Sorry, the website is temporarily unavailable"
+  petitions:
+    invalid_id: "Invalid petition id: %{id}"
+    removed: "Petition %{id} has been removed"
+    csv:
+      filename: "%{scope}-petitions.csv"
+  signatures:
+    invalid_id: "Invalid signature id: %{id}"
+    cant_sign_rejected: "Sorry, you can’t sign petitions that have been rejected"
+    cant_sign_closed: "Sorry, you can’t sign petitions that have been closed"
+    cant_sign_paused: "Sorry, you can’t sign petitions at the moment"
+  sponsors:
+    petition_not_found: "Unable to find Petition with id: %{id}"
+    signature_not_found: "Unable to find Signature with id: %{id}"

@@ -27,13 +27,13 @@ module ArchivedPetitionHelper
     duration = duration.to_d
 
     if duration.frac.zero?
-      pluralize(duration.floor, "month", locale: :en)
+      I18n.t('helpers.petition_duration.months', count: duration.floor)
     elsif duration.frac > 0.75
-      "nearly #{pluralize(duration.ceil, "month", locale: :en)}"
+      I18n.t('helpers.petition_duration.nearly_months', count: duration.ceil)
     elsif duration.frac < 0.25
-      "just over #{pluralize(duration.floor, "month", locale: :en)}"
+      I18n.t('helpers.petition_duration.just_over_months', count: duration.floor)
     else
-      "over #{pluralize(duration.floor, "month", locale: :en)}"
+      I18n.t('helpers.petition_duration.over_months', count: duration.floor)
     end
   end
 end

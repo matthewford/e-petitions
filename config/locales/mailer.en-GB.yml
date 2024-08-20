@@ -1,0 +1,11 @@
+en-GB:
+  mailers:
+    feedback:
+      subject: "Feedback from the Petitions service"
+    sponsor_mailer:
+      sponsor_signed_email_below_threshold:
+        subject: "%{sponsor_name} supported your petition"
+      sponsor_signed_email_on_threshold:
+        subject: "We’re checking your petition"
+      petition_and_email_confirmation_for_sponsor:
+        subject: "Please confirm your email address"
